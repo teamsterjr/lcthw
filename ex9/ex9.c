@@ -33,9 +33,25 @@ int main(int argc, char *argv[])
             numbers[0], numbers[1],
             numbers[2], numbers[3]);
 
-    printf("name each: %d %d %d %d\n",
+    printf("name each: %x %x %x %x\n",
             name[0], name[1],
             name[2], name[3]);
+
+    int name_int = 0;
+    name_int |= (name[0] << 24);
+    name_int |= (name[1] << 16);
+    name_int |= (name[2] << 8); 
+    name_int |= name[3];
+    
+    printf("name_int %x \n", name_int);
+
+    char* name_from_int = (char*)&name_int;
+    printf("first char in name_from_int:%c\n", name_from_int[0]);
+    printf("second char in name_from_int:%c\n", name_from_int[1]);
+    printf("third char in name_from_int:%c\n", name_from_int[2]);
+    printf("fourth char in name_from_int:%c\n", name_from_int[3]);    
+
+    printf("name_from_int:%s \n", name_from_int);
 
     // print the name like a string
     printf("name: %s\n", name);
